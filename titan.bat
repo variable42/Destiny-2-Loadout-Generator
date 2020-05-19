@@ -4,4 +4,12 @@ IF EXIST Titan (
     RMDIR /S /Q Titan
 )
 
-spark-shell -i generate_loadouts.scala --conf spark.driver.args="Titan 19"
+set JAVA_HOME="C:\Progra~1\Java\jdk1.8.0_231"
+
+set PATH=%_JAVA_BIN%;%PATH%
+set _JAVA_OPTIONS="-Xmx24g"
+
+set /p script="Enter script: "
+time /t
+
+spark-shell -i generate_loadouts-%script%.scala --driver-memory 24G --conf spark.driver.args="Titan 19"
